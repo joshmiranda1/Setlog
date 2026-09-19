@@ -48,6 +48,49 @@
   --z-toast: 40;
 
   --nav-height: 64px;
+
+  /* Derived colours (follow the theme automatically) */
+  --color-primary-hover: color-mix(in srgb, var(--color-primary) 84%, var(--color-bg));
+  --color-shimmer: var(--color-hairline);
+  --shadow-float: 0 12px 32px rgb(0 0 0 / 0.18);
+
+  /* Exercise artwork is white line art; invert it to black on light backgrounds. */
+  --illustration-filter: invert(1);
+  --body-base: #d9d9d9;
+  --body-secondary: #8a8a8a;
+
+  color-scheme: light;
+}
+
+/* Dark theme: chosen explicitly, or following the system when no choice is saved. */
+:root[data-theme='dark'] {
+  --color-primary: #f2f2f2;
+  --color-bg: #0b0b0b;
+  --color-surface: #171717;
+  --color-text-muted: #a3a3a3;
+  --color-border: #7a7a7a;
+  --color-hairline: #262626;
+  --shadow-float: 0 12px 32px rgb(0 0 0 / 0.6);
+  --illustration-filter: none;
+  --body-base: #2e2e2e;
+  --body-secondary: #8c8c8c;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-primary: #f2f2f2;
+    --color-bg: #0b0b0b;
+    --color-surface: #171717;
+    --color-text-muted: #a3a3a3;
+    --color-border: #7a7a7a;
+    --color-hairline: #262626;
+    --shadow-float: 0 12px 32px rgb(0 0 0 / 0.6);
+    --illustration-filter: none;
+    --body-base: #2e2e2e;
+    --body-secondary: #8c8c8c;
+    color-scheme: dark;
+  }
 }
 
 @media (min-width: 768px) {

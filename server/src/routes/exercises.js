@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { query } from '../db.js';
-import { HttpError, parseId, requireText } from '../http.js';
+import { HttpError, parseId, requireText, titleCase } from '../http.js';
 
 const router = Router();
 
@@ -10,8 +10,8 @@ router.get('/', async (_req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const name = requireText(req.body?.name, 'name');
-  const muscleGroup = requireText(req.body?.muscle_group, 'muscle_group', { max: 40 });
+  const name = titleCase(requireText(req.body?.name, 'name'));
+  const muscleGroup = titleCase(requireText(req.body?.muscle_group, 'muscle_group', { max: 40 }));
   const { rows } = await query(
     'INSERT INTO exercises (name, muscle_group) VALUES ($1, $2) RETURNING id, name, muscle_group',
     [name, muscleGroup],
@@ -21,9 +21,9 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   const id = parseId(req.params.id);
-  const name = req.body?.name === undefined ? null : requireText(req.body.name, 'name');
+  const name = req.body?.name === undefined ? null : titleCase(requireText(req.body.name, 'name'));
   const muscleGroup =
-    req.body?.muscle_group === undefined ? null : requireText(req.body.muscle_group, 'muscle_group', { max: 40 });
+    req.body?.muscle_group === undefined ? null : titleCase(requireText(req.body.muscle_group, 'muscle_group', { max: 40 }));
   const { rows } = await query(
     `UPDATE exercises SET name = COALESCE($2, name), muscle_group = COALESCE($3, muscle_group)
      WHERE id = $1 RETURNING id, name, muscle_group`,

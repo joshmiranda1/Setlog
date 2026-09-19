@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Check, PencilSimple, Trash, X } from '@phosphor-icons/react';
+import { Link } from 'react-router-dom';
+import ExerciseThumb from '../atoms/ExerciseThumb.jsx';
 import IconButton from '../atoms/IconButton.jsx';
 import Input from '../atoms/Input.jsx';
 import Tag from '../atoms/Tag.jsx';
-import { plural } from '../../lib/format.js';
+import { plural, titleCase } from '../../lib/format.js';
 import styles from './ExerciseRow.module.css';
 
-export default function ExerciseRow({ exercise, setCount, onRename, onDelete }) {
+export default function ExerciseRow({ exercise, setCount, guideSlug, onRename, onDelete }) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(exercise.name);
   const [error, setError] = useState(null);
@@ -21,7 +23,7 @@ export default function ExerciseRow({ exercise, setCount, onRename, onDelete }) 
 
   async function save(e) {
     e.preventDefault();
-    const trimmed = name.trim();
+    const trimmed = titleCase(name);
     if (!trimmed) return setError('Name cannot be empty.');
     if (trimmed === exercise.name) return setEditing(false);
     setBusy(true);
@@ -85,8 +87,15 @@ export default function ExerciseRow({ exercise, setCount, onRename, onDelete }) 
   return (
     <li className={styles.row}>
       <div className={styles.main}>
+        <ExerciseThumb slug={guideSlug} size={52} />
         <div className={styles.text}>
-          <span className={styles.name}>{exercise.name}</span>
+          {guideSlug ? (
+            <Link to={`/exercises/guide/${guideSlug}`} className={`${styles.name} ${styles.link}`}>
+              {exercise.name}
+            </Link>
+          ) : (
+            <span className={styles.name}>{exercise.name}</span>
+          )}
           <span className={styles.meta}>
             <Tag>{exercise.muscle_group}</Tag>
             <span className={styles.count}>{setCount ? plural(setCount, 'set') + ' logged' : 'Not logged yet'}</span>

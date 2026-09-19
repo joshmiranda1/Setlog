@@ -18,7 +18,7 @@
   background: var(--color-primary);
   color: var(--color-bg);
   border-radius: var(--radius);
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.16);
+  box-shadow: var(--shadow-float);
 }
 
 .tooltipDate,

@@ -3,6 +3,7 @@ import { Plus } from '@phosphor-icons/react';
 import Button from '../atoms/Button.jsx';
 import Input from '../atoms/Input.jsx';
 import FormField from '../molecules/FormField.jsx';
+import { titleCase } from '../../lib/format.js';
 import styles from './ExerciseForm.module.css';
 
 const DEFAULT_GROUPS = ['Chest', 'Back', 'Legs', 'Shoulders', 'Arms', 'Core'];
@@ -25,7 +26,7 @@ export default function ExerciseForm({ muscleGroups, onAdd }) {
 
     setSaving(true);
     try {
-      await onAdd({ name: name.trim(), muscle_group: group.trim() });
+      await onAdd({ name: titleCase(name), muscle_group: titleCase(group) });
       setName('');
       document.getElementById('exercise-name')?.focus();
     } catch (err) {
@@ -45,6 +46,7 @@ export default function ExerciseForm({ muscleGroups, onAdd }) {
           id="exercise-name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          onBlur={() => name.trim() && setName(titleCase(name))}
           placeholder="e.g. Front Squat"
           maxLength={100}
           autoComplete="off"
@@ -63,6 +65,7 @@ export default function ExerciseForm({ muscleGroups, onAdd }) {
           list="muscle-groups"
           value={group}
           onChange={(e) => setGroup(e.target.value)}
+          onBlur={() => group.trim() && setGroup(titleCase(group))}
           placeholder="e.g. Legs"
           maxLength={40}
           autoComplete="off"

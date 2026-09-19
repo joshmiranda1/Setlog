@@ -9,6 +9,7 @@ import NotFoundPage from './components/pages/NotFoundPage.jsx';
 
 // The chart library is large, so Progress loads only when opened.
 const ProgressPage = lazy(() => import('./components/pages/ProgressPage.jsx'));
+const ExerciseGuidePage = lazy(() => import('./components/pages/ExerciseGuidePage.jsx'));
 
 export default function App() {
   // exercises, sessions, sets, activeSessionId, loading and error live here.
@@ -29,6 +30,14 @@ export default function App() {
             }
           />
           <Route path="exercises" element={<ExercisesPage />} />
+          <Route
+            path="exercises/guide/:slug"
+            element={
+              <Suspense fallback={<p aria-busy="true">Loading…</p>}>
+                <ExerciseGuidePage />
+              </Suspense>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

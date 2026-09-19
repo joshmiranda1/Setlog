@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './AppHeader.module.css';
 
 /** Top bar: wordmark, the nav (children) and an optional right slot. */
-export default function AppHeader({ title = 'Setlog', aside, children }) {
+export default function AppHeader({ title = 'Setlog', aside, actions, children }) {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -14,7 +14,10 @@ export default function AppHeader({ title = 'Setlog', aside, children }) {
           {title}
         </Link>
         {children}
-        {aside && <div className={styles.aside}>{aside}</div>}
+        <div className={styles.end}>
+          {aside && <div className={styles.aside}>{aside}</div>}
+          {actions}
+        </div>
       </div>
     </header>
   );

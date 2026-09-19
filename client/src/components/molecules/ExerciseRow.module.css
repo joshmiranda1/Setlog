@@ -26,6 +26,21 @@
   overflow-wrap: anywhere;
 }
 
+.link {
+  align-self: flex-start;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-hairline);
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
 .meta {
   display: flex;
   align-items: center;

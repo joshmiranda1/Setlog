@@ -1,0 +1,68 @@
+.viewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: var(--illustration-filter);
+  opacity: 0;
+  transition: opacity 180ms var(--ease-out);
+}
+
+.current {
+  opacity: 1;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.frames {
+  display: flex;
+  gap: var(--space-half);
+}
+
+.frameButton {
+  width: var(--tap-target);
+  height: var(--tap-target);
+  border: var(--border-width) solid var(--color-hairline);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.frameButton[aria-pressed='true'] {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+@media (hover: hover) {
+  .frameButton:hover {
+    border-color: var(--color-border);
+    color: var(--color-primary);
+  }
+}

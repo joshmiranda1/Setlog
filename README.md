@@ -80,8 +80,10 @@ This starts the API on http://localhost:4000 and the web app on http://localhost
 1. **Today:** click **Start session**, pick *Bench Press*, and click **Add set**. The form prefills from your last set. Use the − / + buttons to change reps or weight. Then click **Finish session**.
 2. **History:** click a session card to expand it. You can delete a set, and **Undo** brings it back.
 3. **Progress:** pick an exercise and switch between *Top set*, *Volume* and *Total reps*.
-4. **Exercises:** add, rename, filter or delete exercises.
-5. Narrow the browser (or use the phone view in DevTools). The navigation moves to a bottom bar.
+4. **Exercises → My library:** add, rename, filter or delete exercises. Click a name to open its illustrated guide.
+5. **Exercises → Movement guide:** browse 302 illustrated movements, filter by muscle or equipment, and open one to see it animate and see the muscles it works. **Add to my library** makes it loggable.
+6. Use the **sun/moon switch** in the header to change between light and dark mode. It starts from your system setting and remembers your choice.
+7. Narrow the browser (or use the phone view in DevTools). The navigation moves to a bottom bar.
 
 ### Troubleshooting
 
@@ -128,4 +130,10 @@ All bodies are JSON. Errors come back as `{ "error": "message" }` with a 400, 40
 
 - **State:** `App` owns `exercises`, `sessions`, `sets`, `activeSessionId`, `loading` and `error` (see `client/src/state/AppDataContext.jsx`) and shares them through context. `TodayPage` owns `selectedExerciseId`, and `SetEntryForm` owns the reps and weight inputs.
 - **Active session:** the schema has no "finished" flag, so the id of the in-progress session is kept in `localStorage`. **Finish session** clears it, and discards the session if no sets were logged. Progress leaves out the in-progress session until it's finished, so a half-done workout doesn't read as a drop.
+- **Movement guide:** the illustrations come from the [Workout Guide](https://github.com/bryllim/workout-guide) library (302 exercises, 3 frames each). `client/scripts/sync-workout-guide.mjs` copies its SVG frames into `client/public/workout-guide/` and its metadata into `client/src/data/workout-guide.json`. Those copies are committed, so no extra setup is needed. Library exercises are matched to illustrations by name (`client/src/lib/guide.js`), so no database change was required.
+- **Theme:** light and dark colour tokens live in `client/src/styles/tokens.css`. The choice is saved in `localStorage` and applied before first paint.
 - **Components** follow the wireframe's atomic structure: `client/src/components/{atoms,molecules,organisms,pages}`, each with a `.module.css` file that uses only the tokens in `client/src/styles/tokens.css`.
+
+## Credits
+
+Exercise illustrations: [Workout Guide](https://github.com/bryllim/workout-guide) by [Bryl Lim](https://bryllim.com), with original pose artwork from [Everkinetic](https://github.com/everkinetic/data). Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). See `client/public/workout-guide/ATTRIBUTION.md`.

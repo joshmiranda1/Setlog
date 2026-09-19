@@ -35,7 +35,7 @@
 
 @media (hover: hover) {
   .primary:hover:not(:disabled) {
-    background: #2b2b2b;
+    background: var(--color-primary-hover);
   }
   .secondary:hover:not(:disabled),
   .ghost:hover:not(:disabled) {

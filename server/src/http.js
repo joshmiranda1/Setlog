@@ -18,6 +18,18 @@ export function requireText(value, field, { max = 100 } = {}) {
   return text;
 }
 
+/**
+ * "bench PRESS" -> "Bench Press", "PUSH-UPS" -> "Push-ups".
+ * Capitalizes the first letter of each space-separated word, lowercases the rest, and collapses spaces.
+ */
+export function titleCase(text) {
+  return text
+    .trim()
+    .split(/\s+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
+
 export function optionalText(value, field, { max = 500 } = {}) {
   if (value === undefined || value === null) return '';
   if (typeof value !== 'string') throw new HttpError(400, `${field} must be text`);

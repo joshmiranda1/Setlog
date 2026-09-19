@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ArrowClockwise } from '@phosphor-icons/react';
 import Button from '../atoms/Button.jsx';
+import ThemeToggle from '../molecules/ThemeToggle.jsx';
 import AppHeader from '../organisms/AppHeader.jsx';
 import NavBar from '../organisms/NavBar.jsx';
 import Toast from '../organisms/Toast.jsx';
@@ -49,6 +50,7 @@ export default function AppLayout() {
         Skip to content
       </a>
       <AppHeader
+        actions={<ThemeToggle />}
         aside={
           activeSessionId && pathname !== '/' ? (
             <Link to="/" className={styles.live}>

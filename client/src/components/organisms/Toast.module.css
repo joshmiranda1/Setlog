@@ -19,7 +19,7 @@
   background: var(--color-primary);
   color: var(--color-bg);
   border-radius: var(--radius);
-  box-shadow: 0 12px 32px rgb(0 0 0 / 0.2);
+  box-shadow: var(--shadow-float);
   pointer-events: auto;
   animation: rise var(--duration-base) var(--ease-out);
 }
@@ -62,7 +62,7 @@
 @media (hover: hover) {
   .action:hover,
   .close:hover {
-    background: rgb(255 255 255 / 0.12);
+    background: color-mix(in srgb, var(--color-bg) 16%, transparent);
   }
 }
 

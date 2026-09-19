@@ -29,4 +29,12 @@ export function relativeDay(date) {
   return weeks === 1 ? '1 week ago' : `${weeks} weeks ago`;
 }
 
-export const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
+/** "bench PRESS" -> "Bench Press". Mirrors titleCase() in server/src/http.js, which is the source of truth. */
+export const titleCase = (text) =>
+  text
+    .trim()
+    .split(/\s+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+
+export const plural =(n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;

@@ -6,7 +6,7 @@ import styles from './ExerciseList.module.css';
 
 const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
-export default function ExerciseList({ exercises, setCounts, onRename, onDelete }) {
+export default function ExerciseList({ exercises, setCounts, guideSlugs, onRename, onDelete }) {
   const [filter, setFilter] = useState('');
 
   const groups = useMemo(() => {
@@ -54,6 +54,7 @@ export default function ExerciseList({ exercises, setCounts, onRename, onDelete 
                   key={e.id}
                   exercise={e}
                   setCount={setCounts.get(e.id) ?? 0}
+                  guideSlug={guideSlugs?.get(e.id)}
                   onRename={(name) => onRename(e.id, name)}
                   onDelete={() => onDelete(e)}
                 />
