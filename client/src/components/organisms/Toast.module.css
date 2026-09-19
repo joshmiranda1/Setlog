@@ -1,0 +1,80 @@
+.region {
+  position: fixed;
+  left: var(--space-2);
+  right: var(--space-2);
+  bottom: calc(var(--nav-height) + var(--space-2) + env(safe-area-inset-bottom));
+  z-index: var(--z-toast);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  max-width: 420px;
+  width: 100%;
+  padding: var(--space-half) var(--space-half) var(--space-half) var(--space-2);
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.2);
+  pointer-events: auto;
+  animation: rise var(--duration-base) var(--ease-out);
+}
+
+.message {
+  flex: 1;
+  font-size: var(--font-size-sm);
+}
+
+.action,
+.close {
+  min-height: var(--tap-target);
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.action {
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.close {
+  display: grid;
+  place-items: center;
+  width: var(--tap-target);
+}
+
+.action:focus-visible,
+.close:focus-visible {
+  outline-color: var(--color-bg);
+  outline-offset: -4px;
+}
+
+@media (hover: hover) {
+  .action:hover,
+  .close:hover {
+    background: rgb(255 255 255 / 0.12);
+  }
+}
+
+@media (min-width: 768px) {
+  .region {
+    bottom: var(--space-4);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

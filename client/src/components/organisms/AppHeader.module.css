@@ -1,0 +1,63 @@
+/* No backdrop-filter here: it would trap the fixed bottom NavBar inside the header. */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: var(--color-bg);
+  border-bottom: var(--border-width) solid var(--color-hairline);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: var(--content-max);
+  min-height: 56px;
+  margin: 0 auto;
+  padding: 0 var(--space-2);
+  padding-top: env(safe-area-inset-top);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--tap-target);
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.mark {
+  width: 24px;
+  height: 24px;
+}
+
+.mark rect {
+  fill: var(--color-primary);
+}
+
+.mark path {
+  fill: none;
+  stroke: var(--color-bg);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.aside {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    min-height: 72px;
+    padding: 0 var(--space-4);
+  }
+}

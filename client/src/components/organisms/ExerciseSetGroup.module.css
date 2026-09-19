@@ -1,0 +1,31 @@
+.group {
+  padding-top: var(--space-2);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding-bottom: var(--space-1);
+  border-bottom: var(--border-width) solid var(--color-primary);
+}
+
+.name {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.summary {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.sets {
+  display: flex;
+  flex-direction: column;
+}

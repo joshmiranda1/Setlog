@@ -1,0 +1,30 @@
+.count {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.formCol,
+.listCol {
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .split {
+    grid-template-columns: minmax(280px, 1fr) 2fr;
+  }
+
+  .formCol {
+    position: sticky;
+    top: calc(72px + var(--space-3));
+    align-self: start;
+  }
+}

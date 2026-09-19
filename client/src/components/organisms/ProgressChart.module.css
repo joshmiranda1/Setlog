@@ -1,0 +1,35 @@
+.figure {
+  margin: 0;
+}
+
+.chart {
+  width: 100%;
+  height: 260px;
+}
+
+@media (min-width: 768px) {
+  .chart {
+    height: 340px;
+  }
+}
+
+.tooltip {
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.16);
+}
+
+.tooltipDate,
+.tooltipMeta {
+  font-size: var(--font-size-xs);
+  opacity: 0.8;
+}
+
+.tooltipValue {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}

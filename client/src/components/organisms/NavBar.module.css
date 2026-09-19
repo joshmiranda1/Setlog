@@ -1,0 +1,31 @@
+.nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-nav);
+  background: var(--color-bg);
+  border-top: var(--border-width) solid var(--color-hairline);
+  padding: var(--space-half) var(--space-1) calc(var(--space-half) + env(safe-area-inset-bottom));
+}
+
+.list {
+  display: flex;
+  gap: var(--space-half);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    position: static;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  .list {
+    max-width: none;
+    margin: 0;
+  }
+}

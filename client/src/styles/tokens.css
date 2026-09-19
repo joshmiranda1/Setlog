@@ -1,0 +1,57 @@
+/* Design tokens from docs/03-design-system.md. Components use var(--token), never raw values. */
+:root {
+  /* Colour */
+  --color-primary: #111111;
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f5;
+  --color-text-muted: #595959;
+  --color-border: #767676;
+  /* Decorative hairline for dividers that carry no meaning (inputs keep --color-border). */
+  --color-hairline: #e6e6e6;
+
+  /* Type */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;
+  --line-height-body: 1.5;
+  --line-height-heading: 1.2;
+
+  /* Spacing: 8px base */
+  --space-half: 4px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+
+  /* Shape */
+  --radius: 8px;
+  --radius-pill: 999px;
+  --border-width: 1px;
+  --tap-target: 44px;
+  --focus-ring: 2px solid var(--color-primary);
+  --focus-offset: 2px;
+  --content-max: 1100px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+
+  /* Layers */
+  --z-nav: 20;
+  --z-toast: 40;
+
+  --nav-height: 64px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --font-size-xl: 40px;
+  }
+}

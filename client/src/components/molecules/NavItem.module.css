@@ -1,0 +1,100 @@
+.item {
+  flex: 1;
+  display: flex;
+}
+
+.link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: var(--tap-target);
+  padding: var(--space-half) var(--space-1);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.link:active {
+  background: var(--color-surface);
+}
+
+.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Phone: a short bar above the active tab, so state is not shown by colour alone. */
+.active .icon {
+  position: relative;
+}
+
+.link.active::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  margin-bottom: 2px;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
+.link:not(.active)::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  margin-bottom: 2px;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    color: var(--color-primary);
+  }
+}
+
+@media (min-width: 768px) {
+  .item {
+    flex: none;
+  }
+
+  .link {
+    flex-direction: row;
+    gap: var(--space-1);
+    padding: 0 var(--space-2);
+    min-height: 40px;
+    border-radius: var(--radius-pill);
+    font-size: var(--font-size-sm);
+  }
+
+  .link::before,
+  .link.active::before,
+  .link:not(.active)::before {
+    content: none;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Desktop: active tab is filled black, per the design system. */
+  .active {
+    background: var(--color-primary);
+    color: var(--color-bg);
+  }
+
+  @media (hover: hover) {
+    .link:not(.active):hover {
+      background: var(--color-surface);
+    }
+    .active:hover {
+      color: var(--color-bg);
+    }
+  }
+}

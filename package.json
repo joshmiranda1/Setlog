@@ -1,0 +1,16 @@
+{
+  "name": "setlog",
+  "private": true,
+  "description": "Setlog: workout set tracker (React + Vite client, Express API, PostgreSQL)",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n api,web -c gray,blue \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "migrate": "npm run migrate --prefix server",
+    "seed": "npm run seed --prefix server",
+    "db:setup": "npm run migrate && npm run seed",
+    "build": "npm run build --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
