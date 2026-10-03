@@ -9,7 +9,7 @@ export const formatNumber = (n) => intFormatter.format(n);
 export const formatDecimal = (n) => kgFormatter.format(n);
 export const formatCompact = (n) => (n >= 10_000 ? compactFormatter.format(n) : intFormatter.format(n));
 
-export const formatSet = (set) => (set.weight > 0 ? `${set.reps} × ${formatKg(set.weight)}` : `${set.reps} reps`);
+export const formatSet = (set) => (set.weight > 0 ? `${set.reps} × ${formatKg(set.weight)}` : `${set.reps} reps`);/**Added the code myself - 09/20/2026 */
 
 export const formatLongDate = (date) =>
   new Date(date).toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' });
@@ -37,4 +37,4 @@ export const titleCase = (text) =>
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
 
-export const plural =(n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
+export const plural =(n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;/**Added the code myself - 09/20/2026 */
