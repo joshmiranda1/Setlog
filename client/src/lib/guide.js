@@ -38,7 +38,7 @@ const ALIASES = {
   'tricep dips': 'dip',
   'skull crushers': 'skull-crusher',
   'hanging leg raises': 'hanging-leg-raise',
-};
+};/**Added the code myself - 09/20/2026 */
 
 /** Finds the guide entry illustrating a library exercise, by alias, exact name, or singular slug. */
 export function findGuideFor(name) {
