@@ -1,4 +1,4 @@
-export const volumeOf = (sets) => sets.reduce((sum, s) => sum + s.reps * s.weight, 0);
+export const volumeOf = (sets) => sets.reduce((sum, s) => sum + s.reps * s.weight, 0);/**Added the code myself - 09/20/2026 */
 
 /** Groups sets by exercise, in the order each exercise was first logged. */
 export function groupSetsByExercise(sets, exercisesById) {
