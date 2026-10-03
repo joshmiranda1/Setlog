@@ -1,5 +1,9 @@
 # Setlog: Workout Set Tracker
 
+[![Made with AI](https://img.shields.io/badge/Made_with-AI_assistance-blue)](AI-USAGE.md)
+
+Built with extensive Claude AI and Codex assistance. Read the [AI-use record and code attribution](AI-USAGE.md).
+
 Log every set (reps × kg) of each workout, then see exercise by exercise whether your lifts are going up.
 Planning docs live in [`docs/`](docs/) (proposal, wireframes, design system).
 
@@ -134,6 +138,30 @@ All bodies are JSON. Errors come back as `{ "error": "message" }` with a 400, 40
 - **Theme:** light and dark colour tokens live in `client/src/styles/tokens.css`. The choice is saved in `localStorage` and applied before first paint.
 - **Components** follow the wireframe's atomic structure: `client/src/components/{atoms,molecules,organisms,pages}`, each with a `.module.css` file that uses only the tokens in `client/src/styles/tokens.css`.
 
+## Screenshots
+
+**Today:** start a workout and log exercise sets.
+
+![Setlog Today screen](docs/screenshots/today-light.png)
+
+**History:** review earlier sessions and their recorded sets.
+
+![Setlog History screen](docs/screenshots/history-light.png)
+
+**Progress:** compare an exercise's top set, volume, and total reps across sessions.
+
+![Setlog Progress screen](docs/screenshots/progress-light.png)
+
+**My library:** add, rename, filter, or delete exercises.
+
+![Setlog exercise library](docs/screenshots/exercise-library-light.png)
+
+**Movement guide:** browse illustrated exercises and open a movement's form guide.
+
+![Setlog Movement guide](docs/screenshots/movement-guide-light.png)
+
 ## Credits
 
 Exercise illustrations: [Workout Guide](https://github.com/bryllim/workout-guide) by [Bryl Lim](https://bryllim.com), with original pose artwork from [Everkinetic](https://github.com/everkinetic/data). Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). See `client/public/workout-guide/ATTRIBUTION.md`.
+
+Claude AI and Codex assisted extensively with implementation and documentation. My decisions, corrections, added code, and the source of that assistance are recorded in [AI-USAGE.md](AI-USAGE.md).
